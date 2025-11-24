@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --primaryAccent: #003a77;
+  --secondaryAccent: #f29100;
+  --tertiaryAccent: #2498af;
+}
+
+section {
+  margin-top: 20px;
+}
