@@ -22,10 +22,10 @@ function Navbar (){
           <a className="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Features</a>
+          <a className="nav-link" href="#">About</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Pricing</a>
+          <a className="nav-link" href="#">Produk & Layanan</a>
         </li>
         <li className="nav-item">
           <a className="nav-link disabled" aria-disabled="true">Disabled</a>

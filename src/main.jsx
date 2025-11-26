@@ -6,12 +6,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+    <AuthProvider>
         <App />
-      </BrowserRouter>
-  
+    </AuthProvider>
+    </BrowserRouter>
+    
   </StrictMode>,
 )
