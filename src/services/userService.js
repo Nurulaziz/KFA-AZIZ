@@ -11,7 +11,7 @@ const userService = {
     }
   },
 
-  // Get user by ID
+  // Get users by ID
   getById: async (id) => {
     try {
       const response = await api.get(`/users/${id}`);
@@ -21,27 +21,27 @@ const userService = {
     }
   },
 
-  // Create new user
-  create: async (userData) => {
+  // Create new users
+  create: async (usersData) => {
     try {
-      const response = await api.post('/users', userData);
+      const response = await api.post('/users', usersData);
       return response.data;
     } catch (error) {
       throw error.response ? error.response.data : error;
     }
   },
 
-  // Update user
-  update: async (id, userData) => {
+  // Update users
+  update: async (id, pegwaiData) => {
     try {
-      const response = await api.put(`/users/${id}`, userData);
+      const response = await api.put(`/users/${id}`, usersData);
       return response.data;
     } catch (error) {
       throw error.response ? error.response.data : error;
     }
   },
 
-  // Delete user
+  // Delete users
   delete: async (id) => {
     try {
       const response = await api.delete(`/users/${id}`);

@@ -10,6 +10,11 @@
   --tertiaryAccent: #2498af;
 }
 
+.bg-costum-primary {
+  background-color: #003a77 !important;
+  color: white;
+}
+
 section {
   margin-top: 20px;
 }

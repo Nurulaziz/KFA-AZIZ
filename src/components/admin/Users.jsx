@@ -178,10 +178,10 @@ const handleDeleteConfirm = async () => {
         fetchUsers(pagination.page, search);
     } catch (err) {
         Swal.fire({
-            icon: 'error',
-            title: 'Gagal',
-            text: err.message || 'Gagal menghapus user',
-        });
+        icon: 'error',
+        title: 'Gagal',
+        text: err.message || 'Gagal menghapus user',
+    });
     } finally {
         setDeleteLoading(false);
     }
@@ -240,7 +240,7 @@ const handleDeleteConfirm = async () => {
             <div className="card">
                 <div className="table-responsive">
                 <table className="table table-hover mb-0">
-                    <thead className="table-dark">
+                    <thead>
                     <tr>
                         <th>No</th>
                         <th>Username</th>
@@ -251,7 +251,7 @@ const handleDeleteConfirm = async () => {
                         <th style={{ width: '120px' }}>Aksi</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-group-divider">
                     {users.length === 0 ? (
                         <tr>
                         <td colSpan="7" className="text-center py-4 text-muted">

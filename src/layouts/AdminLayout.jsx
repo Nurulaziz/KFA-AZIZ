@@ -18,7 +18,7 @@ const AdminLayout = () => {
         {/* Main Content Area */}
         <div
             className="flex-grow-1 d-flex flex-column"
-            style={{ minHeight: '100vh' }}
+            style={{ minHeight: '100vh', minWidth: 0 }}
         >
             {/* Navbar */}
             <AdminNavbar
@@ -27,7 +27,7 @@ const AdminLayout = () => {
             />
 
             {/* Page Content - Outlet untuk nested routes */}
-            <main className="p-4 flex-grow-1 bg-light">
+            <main className="p-4 flex-grow-1 bg-light" style={{ minWidth: 0, overflow: 'auto' }} >
             <Outlet />
             </main>
 

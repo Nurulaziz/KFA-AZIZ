@@ -1,17 +1,32 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
+// import Home from './pages/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLayout from './layouts/AdminLayout';
-import Users from './components/admin/Users';
+import {lazy, Suspense} from 'react';
+import PageLoader from './components/PageLoader';
+// import Pegawai from '../src/components/admin/Pegawai'
 
+
+// LAZY IMPORT - Komponen yang di-load saat dibutuhkan
+// ============================================
+
+// Public Pages`
+const Home = lazy(() => import('./pages/Home'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
+
+// Admin Pages
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Users = lazy(() => import('./components/admin/Users'));
+
+// APP COMPONENT
+// ============================================
 function App() {
   return (
-    <>
+    <Suspense fallback={<PageLoader/>}>
       <Routes>
+         {/* Public Routes */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
         </Route>
@@ -28,10 +43,10 @@ function App() {
         >
           <Route index element={<Dashboard />} />
           <Route path="users" element={<Users />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="admindashboard" element={<AdminDashboard />} />
         </Route>
       </Routes>
-    </>
+    </Suspense>
   );
 }
 

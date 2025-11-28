@@ -1,4 +1,7 @@
 import logo from '../assets/images/kfa-logo.png'
+import Login from '../pages/Login';
+import { Link } from "react-router-dom";
+
 
 function Navbar (){
     return (
@@ -31,9 +34,18 @@ function Navbar (){
           <a className="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <button type="button" className="btn ms-auto" style={{
+       <Link to="/login" className="ms-auto">
+  <button
+    type="button"
+    className="btn"
+    style={{
       backgroundColor: 'var(--primaryAccent)',
-  color: 'white'}}>Login</button>
+      color: 'white'
+    }}
+  >
+    Login
+  </button>
+</Link>
     </div>
   </div>
 </nav>

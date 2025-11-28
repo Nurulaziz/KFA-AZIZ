@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import logoKf from '../assets/images/logo-kf.png';
 
 function Login() {
     const navigate = useNavigate();
@@ -55,11 +56,12 @@ function Login() {
 
     return (
         <>
-        <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
-            <div className="mb-4 text-center col-md-4">
+        <div className="container d-flex flex-column justify-content-center align-items-center vh-100 " >
+            <div className="mb-4 text-center col-md-4 shadow p-3 mb-5 bg-body-tertiary rounded" >
             <main className="m-auto form-signin w-100">
                 <form onSubmit={handleSubmit}>
-                <h1 className="mb-3 h3 fw-normal">Please sign in</h1>
+                <img src={logoKf} alt="Logo Kimia Farma Apotek" height="50" />
+                <h1 className="my-3 h3 fw-normal">Please sign in</h1>
                 {error && (
                     <div
                     className="alert alert-danger alert-dismissible fade show"
@@ -78,7 +80,7 @@ function Login() {
                 <div className="form-floating">
                     <input
                     type="email"
-                    className="form-control"
+                    className="form-control mb-2"
                     id="floatingInput"
                     placeholder="name@example.com"
                     name="email"
@@ -117,7 +119,7 @@ function Login() {
                 >
                     {loading ? 'Signing in...' : 'Sign in'}
                 </button>
-                <p className="mt-5 mb-3 text-body-secondary">&copy; 2017–2025</p>
+                <p className="mt-5 mb-3 text-body-secondary">&copy; Kimia Farma Apotek</p>
                 </form>
             </main>
             </div>
