@@ -65,6 +65,17 @@ const Sidebar = () => {
             </li>
             <li>
             <NavLink
+                to="/admin/pdf-excel"
+                className={({ isActive }) =>
+                `nav-link text-white ${isActive ? 'active' : ''}`
+                }
+            >
+                <i className="bi bi-file-earmark-richtext me-2"></i>
+                PDF &amp; Excel
+            </NavLink>
+            </li>
+            <li>
+            <NavLink
                 to="/admin/settings"
                 className={({ isActive }) =>
                 `nav-link text-white ${isActive ? 'active' : ''}`
