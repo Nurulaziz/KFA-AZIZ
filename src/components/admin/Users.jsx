@@ -123,6 +123,13 @@ const Users = () => {
             return;
         }
         await userService.create(formData);
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: 'User berhasil ditambahkan',
+            timer: 1500,
+            showConfirmButton: false,
+        });
         } else {
         // Mode edit
         // Validasi untuk edit
@@ -140,6 +147,13 @@ const Users = () => {
         }
 
         await userService.update(selectedUser.id, updateData);
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: 'User berhasil diperbarui',
+            timer: 1500,
+            showConfirmButton: false,
+        });
         }
 
         // Tutup modal dan refresh data
@@ -176,6 +190,13 @@ const handleDeleteConfirm = async () => {
 
         handleCloseDeleteModal();
         fetchUsers(pagination.page, search);
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: 'User berhasil dihapus',
+            timer: 1500,
+            showConfirmButton: false,
+        });
     } catch (err) {
         Swal.fire({
             icon: 'error',
