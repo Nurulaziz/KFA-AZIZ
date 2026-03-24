@@ -3,6 +3,8 @@ import useAnnouncements from '../hooks/useAnnouncements';
 import useMosqueSettings from '../hooks/useMosqueSettings';
 import Clock from '../components/tv/Clock';
 import PrayerTimes from '../components/tv/PrayerTimes';
+import PrayerCountdown from '../components/tv/PrayerCountdown';
+import PrayerAlert from '../components/tv/PrayerAlert';
 import RunningText from '../components/tv/RunningText';
 
 const DAYS_ID = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
@@ -20,7 +22,7 @@ function formatDateID(date) {
 }
 
 function TvDisplay() {
-  const { prayerTimes, activePrayer, loading } = usePrayerTimes();
+  const { prayerTimes, activePrayer, nextPrayer, loading } = usePrayerTimes();
   const { announcements } = useAnnouncements(true);
   const { mosqueName } = useMosqueSettings();
 
@@ -37,6 +39,9 @@ function TvDisplay() {
       {/* Bismillah */}
       <div className="tv-bismillah">بسم الله الرحمن الرحيم</div>
 
+      {/* Countdown — hanya muncul ≤15 menit sebelum sholat */}
+      <PrayerCountdown nextPrayer={nextPrayer} />
+
       {/* Digital Clock */}
       <Clock />
 
@@ -49,6 +54,9 @@ function TvDisplay() {
 
       {/* Running Text */}
       <RunningText announcements={announcements} />
+
+      {/* Alert Overlay — muncul otomatis saat waktu sholat tiba */}
+      <PrayerAlert activePrayer={activePrayer} />
     </div>
   );
 }

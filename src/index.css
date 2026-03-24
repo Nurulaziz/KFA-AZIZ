@@ -195,3 +195,101 @@ section {
   0%, 100% { opacity: 0.4; }
   50%       { opacity: 0.8; }
 }
+
+/* Countdown bar */
+.prayer-countdown {
+  text-align: center;
+  padding: 0.35rem 1rem;
+  background: rgba(245, 200, 66, 0.15);
+  color: #f5c842;
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-top: 1px solid rgba(245, 200, 66, 0.25);
+  border-bottom: 1px solid rgba(245, 200, 66, 0.25);
+  transition: background 0.5s;
+}
+
+.prayer-countdown.imminent {
+  background: rgba(245, 200, 66, 0.3);
+  animation: countdown-pulse 1s ease-in-out infinite;
+}
+
+@keyframes countdown-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+/* Prayer Alert Overlay */
+.prayer-alert-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: alert-fade-in 0.5s ease;
+  cursor: pointer;
+}
+
+@keyframes alert-fade-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.prayer-alert-box {
+  text-align: center;
+  padding: 3rem 4rem;
+  border: 3px solid #f5c842;
+  border-radius: 20px;
+  background: #0d1f13;
+  box-shadow: 0 0 60px rgba(245, 200, 66, 0.4);
+  animation: alert-glow 2s ease-in-out infinite;
+}
+
+@keyframes alert-glow {
+  0%, 100% { box-shadow: 0 0 40px rgba(245, 200, 66, 0.3); }
+  50%       { box-shadow: 0 0 80px rgba(245, 200, 66, 0.6); }
+}
+
+.prayer-alert-allahu {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: #f5c842;
+  margin-bottom: 0.5rem;
+  direction: rtl;
+  text-shadow: 0 0 20px rgba(245, 200, 66, 0.5);
+}
+
+.prayer-alert-title {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: #a8d8b0;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.prayer-alert-name {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #f5f0e0;
+  margin-bottom: 1rem;
+}
+
+.prayer-alert-arabic {
+  color: #a8d8b0;
+  font-size: 0.7em;
+}
+
+.prayer-alert-sub {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  color: #c5c0b0;
+  margin-bottom: 1.5rem;
+}
+
+.prayer-alert-dismiss {
+  font-size: 0.8rem;
+  color: rgba(197, 192, 176, 0.5);
+  font-style: italic;
+}
