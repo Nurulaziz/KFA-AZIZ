@@ -48,15 +48,15 @@ function TvDisplay() {
       {/* Digital Clock */}
       <Clock />
 
+      {/* Hadith Display */}
+      <HadithDisplay hadiths={hadiths} />
+
       {/* Prayer Times */}
       <PrayerTimes
         prayerTimes={prayerTimes}
         activePrayer={activePrayer}
         loading={loading}
       />
-
-      {/* Hadith Display */}
-      <HadithDisplay hadiths={hadiths} />
 
       {/* Running Text */}
       <RunningText announcements={announcements} />
