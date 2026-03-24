@@ -7,6 +7,7 @@ import MasjidDashboard from './pages/admin/MasjidDashboard';
 import Announcements from './pages/admin/Announcements';
 import Settings from './pages/admin/Settings';
 import Users from './components/admin/Users';
+import Hadith from './pages/admin/Hadith';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route index element={<MasjidDashboard />} />
         <Route path="dashboard" element={<MasjidDashboard />} />
         <Route path="announcements" element={<Announcements />} />
+        <Route path="hadith" element={<Hadith />} />
         <Route path="settings" element={<Settings />} />
         <Route path="users" element={<Users />} />
       </Route>

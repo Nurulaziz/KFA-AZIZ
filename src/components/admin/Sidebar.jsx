@@ -54,6 +54,17 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink
+            to="/admin/hadith"
+            className={({ isActive }) =>
+              `nav-link text-white ${isActive ? 'active' : ''}`
+            }
+          >
+            <i className="bi bi-book me-2"></i>
+            Hadith
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/admin/users"
             className={({ isActive }) =>
               `nav-link text-white ${isActive ? 'active' : ''}`

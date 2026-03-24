@@ -1,11 +1,13 @@
 import usePrayerTimes from '../hooks/usePrayerTimes';
 import useAnnouncements from '../hooks/useAnnouncements';
 import useMosqueSettings from '../hooks/useMosqueSettings';
+import useHadith from '../hooks/useHadith';
 import Clock from '../components/tv/Clock';
 import PrayerTimes from '../components/tv/PrayerTimes';
 import PrayerCountdown from '../components/tv/PrayerCountdown';
 import PrayerAlert from '../components/tv/PrayerAlert';
 import RunningText from '../components/tv/RunningText';
+import HadithDisplay from '../components/tv/HadithDisplay';
 
 const DAYS_ID = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 const MONTHS_ID = [
@@ -25,6 +27,7 @@ function TvDisplay() {
   const { prayerTimes, activePrayer, nextPrayer, loading } = usePrayerTimes();
   const { announcements } = useAnnouncements(true);
   const { mosqueName } = useMosqueSettings();
+  const { hadiths } = useHadith(true);
 
   const today = new Date();
 
@@ -51,6 +54,9 @@ function TvDisplay() {
         activePrayer={activePrayer}
         loading={loading}
       />
+
+      {/* Hadith Display */}
+      <HadithDisplay hadiths={hadiths} />
 
       {/* Running Text */}
       <RunningText announcements={announcements} />
