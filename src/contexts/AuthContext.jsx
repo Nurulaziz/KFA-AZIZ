@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
             if (token && savedUser) {
             // verifikasi token masih valid dengan memanggil API
             const response = await authService.getCurrentUser();
-            setUser(response.data || savedUser);
+            setUser(response || savedUser);
             setIsAuthenticated(true);
             } else {
             setUser(null);

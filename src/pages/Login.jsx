@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 function Login() {
@@ -117,7 +117,10 @@ function Login() {
                 >
                     {loading ? 'Signing in...' : 'Sign in'}
                 </button>
-                <p className="mt-5 mb-3 text-body-secondary">&copy; 2017–2025</p>
+                <p className="mt-3 mb-0">
+                  Belum punya akun? <Link to="/register">Daftar di sini</Link>
+                </p>
+                <p className="mt-4 mb-3 text-body-secondary">&copy; 2017–2025</p>
                 </form>
             </main>
             </div>

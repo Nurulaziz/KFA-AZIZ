@@ -1,14 +1,19 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const AdminNavbar = ({ onToggleSidebar, sidebarOpen }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
+    if (!window.confirm('Yakin ingin keluar?')) return;
     await logout();
     navigate('/login');
   };
+
+  const initials = user?.name
+    ? user.name.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase()
+    : (user?.email?.[0] || 'A').toUpperCase();
 
   return (
     <nav className="bg-white shadow-sm navbar navbar-expand-lg navbar-light border-bottom">
@@ -18,58 +23,52 @@ const AdminNavbar = ({ onToggleSidebar, sidebarOpen }) => {
           className="btn btn-outline-secondary me-3"
           type="button"
           onClick={onToggleSidebar}
-          title={sidebarOpen ? 'Hide Sidebar' : 'Show Sidebar'}
+          title={sidebarOpen ? 'Sembunyikan Sidebar' : 'Tampilkan Sidebar'}
         >
-          {sidebarOpen ? (
-            <i className="bi bi-list fs-5"></i>
-          ) : (
-            <i className="bi bi-chevron-right fs-5"></i>
-          )}
+          <i className={`bi ${sidebarOpen ? 'bi-list' : 'bi-chevron-right'} fs-5`}></i>
         </button>
 
         {/* Right Side Items */}
-        <ul className="navbar-nav">
-          {/* User Dropdown */}
+        <ul className="navbar-nav ms-auto">
           <li className="nav-item dropdown">
             <a
-              className="nav-link dropdown-toggle d-flex align-items-center"
+              className="nav-link dropdown-toggle d-flex align-items-center gap-2"
               href="#"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <img
-                src="https://github.com/mdo.png"
-                alt="User"
-                width="32"
-                height="32"
-                className="rounded-circle me-2"
-              />
-              <span>{user?.name || user?.email || 'Admin'}</span>
+              <div
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: '50%',
+                  background: '#003a77',
+                  color: '#fff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 700,
+                  fontSize: '0.8rem',
+                  flexShrink: 0,
+                }}
+              >
+                {initials}
+              </div>
+              <span>{user?.name || user?.fullName || user?.email || 'Admin'}</span>
             </a>
             <ul className="dropdown-menu dropdown-menu-end">
               <li>
-                <a className="dropdown-item" href="#">
-                  <i className="bi bi-person-circle me-2"></i>
-                  Profile
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/admin/settings">
                   <i className="bi bi-gear me-2"></i>
-                  Settings
-                </a>
+                  Pengaturan
+                </Link>
               </li>
+              <li><hr className="dropdown-divider" /></li>
               <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <button
-                  className="dropdown-item text-danger"
-                  onClick={handleLogout}
-                >
+                <button className="dropdown-item text-danger" onClick={handleLogout}>
                   <i className="bi bi-box-arrow-right me-2"></i>
-                  Logout
+                  Keluar
                 </button>
               </li>
             </ul>

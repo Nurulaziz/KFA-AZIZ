@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import TvDisplay from './pages/TvDisplay';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLayout from './layouts/AdminLayout';
 import MasjidDashboard from './pages/admin/MasjidDashboard';
@@ -17,6 +18,7 @@ function App() {
 
       {/* Auth */}
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       {/* Admin - protected */}
       <Route

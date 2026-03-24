@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import prayerService from '../services/prayerService';
+import settingsService from '../services/settingsService';
 
 const PRAYER_KEYS = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
@@ -70,8 +71,9 @@ function usePrayerTimes() {
 
   useEffect(() => {
     const fetchPrayers = async () => {
+      const { city, country } = settingsService.get();
       const today = new Date().toISOString().split('T')[0];
-      const cacheKey = `prayerCache_${today}`;
+      const cacheKey = `prayerCache_${today}_${city}`;
       const cached = localStorage.getItem(cacheKey);
 
       if (cached) {
@@ -84,7 +86,7 @@ function usePrayerTimes() {
       }
 
       try {
-        const timings = await prayerService.getTimingsByCity();
+        const timings = await prayerService.getTimingsByCity(city, country);
         const filtered = {};
         PRAYER_KEYS.forEach((k) => {
           filtered[k] = timings[k].split(' ')[0];

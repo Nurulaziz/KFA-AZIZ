@@ -2,6 +2,8 @@ const SETTINGS_KEY = 'mosqueSettings';
 
 const DEFAULT_SETTINGS = {
   mosqueName: 'Musholla Al Husna',
+  city: 'Bekasi',
+  country: 'Indonesia',
 };
 
 const settingsService = {

@@ -14,7 +14,7 @@ const INDONESIAN_NAMES = {
 function MasjidDashboard() {
   const { announcements, loading: annLoading } = useAnnouncements();
   const { prayerTimes, activePrayer, loading: prayerLoading } = usePrayerTimes();
-  const { mosqueName } = useMosqueSettings();
+  const { mosqueName, settings } = useMosqueSettings();
 
   const totalAnnouncements = announcements.length;
   const activeAnnouncements = announcements.filter((a) => a.isActive).length;
@@ -84,7 +84,7 @@ function MasjidDashboard() {
           <div className="card h-100">
             <div className="card-header">
               <i className="bi bi-clock me-2"></i>
-              Jadwal Sholat Hari Ini (Bekasi)
+              Jadwal Sholat Hari Ini ({settings.city})
             </div>
             <div className="card-body">
               {prayerLoading ? (
