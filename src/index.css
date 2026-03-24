@@ -13,3 +13,185 @@
 section {
   margin-top: 20px;
 }
+
+/* ===================== TV Display Styles ===================== */
+.tv-display {
+  background: #0d1f13;
+  color: #f5f0e0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+}
+
+.tv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 0.5rem;
+  border-bottom: 1px solid rgba(245, 200, 66, 0.3);
+}
+
+.tv-mosque-name {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #f5c842;
+  letter-spacing: 0.03em;
+}
+
+.tv-date {
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+  color: #c5c0b0;
+  font-weight: 500;
+}
+
+.tv-bismillah {
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  color: #a8d8b0;
+  padding: 0.3rem 0;
+  letter-spacing: 0.05em;
+}
+
+.tv-clock-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 0.5rem 0;
+}
+
+.tv-clock {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #f5c842;
+  text-shadow: 0 0 20px rgba(245, 200, 66, 0.4);
+  line-height: 1;
+}
+
+.tv-clock-seconds {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: rgba(245, 200, 66, 0.6);
+  vertical-align: super;
+  margin-left: 0.2em;
+}
+
+.tv-prayer-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 2rem 4rem;
+  gap: 1rem;
+}
+
+.prayer-card {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  transition: all 0.5s ease;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.prayer-card.active {
+  border-color: #f5c842;
+  background: rgba(245, 200, 66, 0.15);
+  box-shadow: 0 0 30px rgba(245, 200, 66, 0.3);
+  transform: scale(1.05);
+}
+
+.prayer-card-arabic {
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  color: #a8d8b0;
+  margin-bottom: 0.2rem;
+  direction: rtl;
+}
+
+.prayer-card-name {
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  color: #c5c0b0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.prayer-card.active .prayer-card-name {
+  color: #f5c842;
+}
+
+.prayer-time {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #f5f0e0;
+}
+
+.prayer-card.active .prayer-time {
+  color: #f5c842;
+}
+
+/* Running Text Ticker */
+.ticker-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(245, 200, 66, 0.92);
+  color: #0d1f13;
+  padding: 0.5rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 10;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-label {
+  background: #0d1f13;
+  color: #f5c842;
+  padding: 0 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.ticker-track {
+  overflow: hidden;
+  flex: 1;
+}
+
+.ticker-text {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 1rem;
+  animation: ticker-scroll var(--ticker-duration, 40s) linear infinite;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Prayer skeleton loader */
+.prayer-skeleton {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  flex: 1;
+  height: 8rem;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.8; }
+}
